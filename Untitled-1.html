@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FunnyMaze</title>
+    <style>
+        /* Estilos gerais da página */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        /* Estilo do cabeçalho */
+        header {
+           text-align: center; 
+            padding: 10px;
+            background-color: #af4c5c;
+            color: white;
+
+        }
+
+        /* Estilo do logo */
+        .logo {
+            border: 5px solid #333;
+            display: inline-block;
+            padding: 5px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+        }
+        /* Estilo das seções principais */
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+
+        .section {
+            flex: 1;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            min-width: 250px;
+            max-width: 400px; /* Aumentado para permitir mais espaço */
+            transition: background-color 0.3s ease;
+        }
+
+        .section h2 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+
+        .section:hover {
+            background-color: #e0f7fa;
+        }
+
+        /* Estilo da galeria de imagens */
+        .images {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .images h2 {
+            color: #4CAF50;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: calc(100% - 20px); /* Ajuste para garantir responsividade */
+            max-width: 300px; /* Máximo tamanho da imagem */
+            height: auto; /* Manter proporção */
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05); /* Leve aumento ao passar o mouse */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+
+        /* Estilo da sobreposição (overlay) */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            border: none;
+        }
+        p{
+            font-family: comic sans;
+            font-size: 22px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body onload="showWelcomeMessage()">
+    <!-- Cabeçalho com logo -->
+    <header>
+        <img src="logo2.png" alt="Logo do Jogo" style="width:700px" >
+        <img src="Logo sem o gato.png" alt="Logo do Jogo" width="200" style="width: 200px; margin-left: 50px; margin-right: 50px;">
+        <img src="Logo1.png" alt="Logo do Jogo" width="550">
+        </header>
+
+    <!-- Seções principais -->
+    <div class="container">
+        <div class="section">
+            <h2>Mecânicas</h2>
+            <p>WASD e/ou SETAS DIRECIONAIS: Para se mover.<br>
+               ESPAÇO: Para pular.<br>
+               MOUSE: Para olhar ao redor.</p>
+        </div>
+        <div class="section">
+            <h2>Sobre o Jogo</h2>
+            <p>Funny Maze, como o nome já diz, é um jogo de labirinto divertido. O jogo contém imagens com humor, sendo os famosos "Memes."
+               Neste jogo temos três etapas, começando num labirinto com memes de categoria leves, posteriormente, médios e pesados.</p>
+
+        </div>
+        <div class="section">
+            <h2>Intuito do Jogo</h2>
+            <p>Finalizar o labirinto enquanto se diverte com os memes disponíveis pelo mapa.</p>
+        </div>
+        <div class="section">
+            <h2>Criadores</h2>
+            <p>NATHÃ FLORÊNCIO DE AMORIM - 3181<br>
+               JORGE LUCAS SILVA MEDEIROS - 2211<br>
+               VITOR FERREIRA DA SILVA GOMES - 3111<br>
+               YAGO MOREIRA MAGALHÃES - 3111<br>
+               LUANA PEREIRA DA SILVA SOBRAL - 2111<br>
+               PEDRO DIAS CORRÊA SILVA - 2211</p>
+        </div>
+    </div>
+
+    <!-- Galeria de imagens -->
+    <div class="images">
+        <h2>Imagens do Jogo</h2>
+        <div class="gallery">
+            <div class="image-item">
+                <img src="bixo.jpg" alt="Imagem do jogo 1" class="gallery-img">             
+            </div>
+            <div class="image-item">
+                <img src="i.jpg" alt="Imagem do jogo 2" class="gallery-img">              
+            </div>
+            <div class="image-item">
+                <img src="jk.jpg" alt="Imagem do jogo 3" class="gallery-img">             
+            </div>
+        </div>
+    </div>
+    <img src="gif.gif" style = "margin-left:700px;">
+
+    <!-- Sobreposição para imagem ampliada -->
+    <div class="overlay">
+        <img src="" alt="Imagem Ampliada" class="overlay-img">
+    </div>
+
+    <!-- Scripts para funcionalidades interativas -->
+    <script>
+        // Manipula a exibição das imagens ampliadas
+        $(document).ready(function() {
+            // Ao clicar em uma imagem da galeria, exibe a imagem em uma sobreposição
+            $('.gallery-img').click(function() {
+                var src = $(this).attr('src'); // Obtém a URL da imagem clicada
+                $('.overlay-img').attr('src', src); // Define a URL da imagem ampliada
+                $('.overlay').fadeIn(); // Exibe a sobreposição
+            });
+
+            // Ao clicar na sobreposição, oculta-a
+            $('.overlay').click(function() {
+                $(this).fadeOut(); // Oculta a sobreposição
+            });
+        });
+    </script>
+</body>
+</html>
